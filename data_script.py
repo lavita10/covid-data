@@ -19,8 +19,23 @@ def base():
     if req.status_code == 200:
         data = json.loads(req.text)
         #print(data.keys())
+    return data
+
+def get_day_one(country):
+    """
+    Gets all the data from base url
+    """
+    url = "{}dayone/country/{}/status/confirmed".format(base_url,country)
+    data = {}
+    req = requests.get(url)
+
+    if req.status_code == 200:
+        data = json.loads(req.text)
+        #print(data.keys())
+
 
     return data
+
 if __name__ == "__main__" :
-    print(base())
+    print(get_day_one("canada"))
 
